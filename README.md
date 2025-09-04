@@ -1,2 +1,2 @@
-# Hashin
-Client-side file hashing made simple
+# Hashin - Client-side file hashing made simple
+

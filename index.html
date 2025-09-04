@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>HashIt - Secure File Hasher</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <div class="logo"><i class="fas fa-fingerprint"></i></div>
+        <h1>HashIt</h1>
+        <p class="subtitle">Secure file hashing made simple</p>
+      </header>
+
+      <div class="card algorithm-selector">
+        <label for="algorithm">
+          <i class="fas fa-lock"></i>Hashing Algorithm
+        </label>
+
+        <div class="custom-dropdown">
+          <div class="dropdown-selected">
+            <span>SHA-256</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-options">
+            <div class="dropdown-option" data-value="MD5">
+              <i class="fas fa-shield-alt"></i>
+              <span>MD5</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA1">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA-1</span>
+            </div>
+            <div class="dropdown-option selected" data-value="SHA256">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA-256</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA384">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA-384</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA512">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA-512</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA3-224">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA3-224</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA3-256">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA3-256</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA3-384">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA3-384</span>
+            </div>
+            <div class="dropdown-option" data-value="SHA3-512">
+              <i class="fas fa-shield-alt"></i>
+              <span>SHA3-512</span>
+            </div>
+            <div class="dropdown-option" data-value="RIPEMD160">
+              <i class="fas fa-shield-alt"></i>
+              <span>RIPEMD-160</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="file-input-area">
+        <div id="dropzone" class="dropzone">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <div class="main-text">Drop your file here</div>
+          <div class="hint">or click to browse your files</div>
+          <input type="file" id="fileInput" class="file-input" />
+        </div>
+
+        <button id="mobileButton" class="mobile-button">
+          <i class="fas fa-file-upload"></i> Select File to Hash
+        </button>
+
+        <div class="file-progress" id="fileProgress">
+          <div class="file-progress-bar" id="fileProgressBar"></div>
+        </div>
+      </div>
+
+      <div class="spinner" id="spinner"></div>
+
+      <div id="results" class="results">
+        <div class="file-info">
+          <div class="file-icon">
+            <i class="fas fa-file"></i>
+          </div>
+          <div class="file-details">
+            <div id="filename" class="filename"></div>
+            <div id="filesize" class="file-size"></div>
+          </div>
+        </div>
+
+        <span class="hash-label">Hash Result (<span id="algorithmName">SHA-256</span>):</span>
+        <div id="hash" class="hash-result"></div>
+
+        <div class="action-buttons">
+          <button id="copyButton" class="copy-btn">
+            <i class="fas fa-copy"></i> Copy to Clipboard
+          </button>
+          <button id="newFileButton" class="new-file-btn">
+            <i class="fas fa-plus"></i> New File
+          </button>
+        </div>
+      </div>
+
+      <div id="copyNotification" class="copy-notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Copied to clipboard!</span>
+      </div>
+    </div>
+
+    <script src="js/crypto-js.min.js"></script>
+    <script src="js/sha3.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
+
