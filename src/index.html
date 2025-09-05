@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>HashIt - Secure File Hasher</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>HashIn - Secure File Hasher</title>
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -12,7 +12,7 @@
     <div class="app-container">
       <header>
         <div class="logo"><i class="fas fa-fingerprint"></i></div>
-        <h1>HashIt</h1>
+        <h1>HashIn</h1>
         <p class="subtitle">Secure file hashing made simple</p>
       </header>
 
@@ -21,54 +21,18 @@
           <i class="fas fa-lock"></i>Hashing Algorithm
         </label>
 
-        <div class="custom-dropdown">
-          <div class="dropdown-selected">
-            <span>SHA-256</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="dropdown-options">
-            <div class="dropdown-option" data-value="MD5">
-              <i class="fas fa-shield-alt"></i>
-              <span>MD5</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA1">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA-1</span>
-            </div>
-            <div class="dropdown-option selected" data-value="SHA256">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA-256</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA384">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA-384</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA512">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA-512</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA3-224">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA3-224</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA3-256">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA3-256</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA3-384">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA3-384</span>
-            </div>
-            <div class="dropdown-option" data-value="SHA3-512">
-              <i class="fas fa-shield-alt"></i>
-              <span>SHA3-512</span>
-            </div>
-            <div class="dropdown-option" data-value="RIPEMD160">
-              <i class="fas fa-shield-alt"></i>
-              <span>RIPEMD-160</span>
-            </div>
-          </div>
-        </div>
+        <select id="algorithm" class="algorithm-select">
+          <option value="MD5">MD5</option>
+          <option value="SHA1">SHA-1</option>
+          <option value="SHA256" selected>SHA-256</option>
+          <option value="SHA384">SHA-384</option>
+          <option value="SHA512">SHA-512</option>
+          <option value="SHA3-224">SHA3-224</option>
+          <option value="SHA3-256">SHA3-256</option>
+          <option value="SHA3-384">SHA3-384</option>
+          <option value="SHA3-512">SHA3-512</option>
+          <option value="RIPEMD160">RIPEMD-160</option>
+        </select>
       </div>
 
       <div class="file-input-area">
@@ -115,7 +79,6 @@
       </div>
 
       <div id="copyNotification" class="copy-notification">
-        <i class="fas fa-check-circle"></i>
         <span>Copied to clipboard!</span>
       </div>
     </div>

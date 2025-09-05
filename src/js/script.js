@@ -12,65 +12,21 @@ const spinner = document.getElementById("spinner");
 const fileProgress = document.getElementById("fileProgress");
 const fileProgressBar = document.getElementById("fileProgressBar");
 const copyNotification = document.getElementById("copyNotification");
+const algorithmSelect = document.getElementById("algorithm");
 
-// Custom dropdown elements
-const dropdownSelected = document.querySelector(".dropdown-selected");
-const dropdownOptions = document.querySelector(".dropdown-options");
-const dropdownOptionItems = document.querySelectorAll(".dropdown-option");
-const dropdownChevron = document.querySelector(".dropdown-selected i");
-
-// Set initial algorithm value
 let selectedAlgorithm = "SHA256";
 
-// Custom dropdown functionality
-dropdownSelected.addEventListener("click", () => {
-  dropdownOptions.classList.toggle("active");
-  dropdownChevron.style.transform = dropdownOptions.classList.contains("active")
-    ? "rotate(180deg)"
-    : "rotate(0deg)";
-});
+algorithmSelect.addEventListener("change", function () {
+  selectedAlgorithm = this.value;
+  algorithmName.textContent = this.options[this.selectedIndex].text;
 
-// Handle option selection
-dropdownOptionItems.forEach((option) => {
-  option.addEventListener("click", () => {
-    const value = option.getAttribute("data-value");
-    const text = option.querySelector("span").textContent;
-
-    // Update selected value
-    selectedAlgorithm = value;
-    algorithmName.textContent = text;
-
-    // Update dropdown display
-    dropdownSelected.querySelector("span").textContent = text;
-
-    // Update selected class
-    dropdownOptionItems.forEach((opt) => opt.classList.remove("selected"));
-    option.classList.add("selected");
-
-    // Close dropdown
-    dropdownOptions.classList.remove("active");
-    dropdownChevron.style.transform = "rotate(0deg)";
-
-    // If there's already a file, re-calculate the hash with new algorithm
-    if (filenameDisplay.textContent) {
-      hashDisplay.textContent =
-        "Select the file again to calculate with " + text;
-    }
-  });
-});
-
-// Close dropdown when clicking outside
-document.addEventListener("click", (e) => {
-  if (
-    !dropdownSelected.contains(e.target) &&
-    !dropdownOptions.contains(e.target)
-  ) {
-    dropdownOptions.classList.remove("active");
-    dropdownChevron.style.transform = "rotate(0deg)";
+  if (filenameDisplay.textContent) {
+    hashDisplay.textContent =
+      "Select the file again to calculate with " +
+      this.options[this.selectedIndex].text;
   }
 });
 
-// Handle drag and drop events
 dropzone.addEventListener("dragover", (e) => {
   e.preventDefault();
   dropzone.classList.add("dragover");
@@ -86,32 +42,28 @@ dropzone.addEventListener("drop", (e) => {
   handleFile(e.dataTransfer.files[0]);
 });
 
-// Handle file selection via click on dropzone
 dropzone.addEventListener("click", (e) => {
   if (e.target === dropzone) {
     fileInput.click();
   }
 });
 
-// Handle file selection via mobile button
 mobileButton.addEventListener("click", () => {
   fileInput.click();
 });
 
-// Handle new file button
 newFileButton.addEventListener("click", () => {
   fileInput.value = "";
   resultsContainer.classList.remove("visible");
 });
 
-// Handle file selection via input
 fileInput.addEventListener("change", (e) => {
   if (e.target.files.length) {
     handleFile(e.target.files[0]);
+    fileInput.value = "";
   }
 });
 
-// Handle copy to clipboard
 copyButton.addEventListener("click", () => {
   const hashText = hashDisplay.textContent;
   navigator.clipboard
@@ -127,18 +79,15 @@ copyButton.addEventListener("click", () => {
     });
 });
 
-// Format file size
 function formatFileSize(bytes) {
   if (bytes < 1024) return bytes + " bytes";
   else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
   else return (bytes / 1048576).toFixed(1) + " MB";
 }
 
-// Process the selected file
 function handleFile(file) {
   if (!file) return;
 
-  // Show loading state
   spinner.style.display = "block";
   fileProgress.style.display = "block";
   resultsContainer.classList.remove("visible");
@@ -147,7 +96,6 @@ function handleFile(file) {
   filenameDisplay.textContent = file.name;
   filesizeDisplay.textContent = formatFileSize(file.size);
 
-  // Simulate progress for large files
   let progress = 0;
   const progressInterval = setInterval(() => {
     progress += 5;
@@ -201,7 +149,6 @@ function handleFile(file) {
           hash = "Unsupported algorithm";
       }
 
-      // Display results
       hashDisplay.textContent = hash;
       resultsContainer.classList.add("visible");
       spinner.style.display = "none";
