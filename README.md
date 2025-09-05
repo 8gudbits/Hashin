@@ -1,4 +1,4 @@
-# Hashin - Client-side file hashing made simple
+# HashIn - Client-side file hashing made simple
 
 Hashin is a secure, client-side file hashing tool that generates cryptographic hashes directly in the browser. Files never leave the local device, ensuring complete privacy.
 
