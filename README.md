@@ -15,5 +15,5 @@ Visit [https://8gudbits.github.io/apps/hashin/] to access the web version direct
 
 For mobile devices, the Android APK is available for download:
 
-- [Download APK](https://github.com/8gudbits/Hashin/releases)
+- [Download APK](https://github.com/8gudbits/HashIn/releases)
 
